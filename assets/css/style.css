@@ -7,7 +7,8 @@
 body {
         font-family: 'Roboto', sans-serif;
         font-style: normal;
-        Background-color: #eef9bf
+        Background-color: #eef9bf;
+        padding-bottom: 153px;
 }
 
 header{

@@ -5,27 +5,27 @@
 }
 
 body {
-        font-family: 'Roboto', sans-serif;
-        font-style: normal;
-        Background-color: #eef9bf;
-        padding-bottom: 153px;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    Background-color: #eef9bf;
+    padding-bottom: 153px;
 }
 
-header{
+header {
     display: flex;
     justify-content: center;
 }
 
-h1{
-font-weight: 700;
-font-size: 56px;
-color: #75B79E;
-margin-top: 40px;
-margin-bottom: 47px;
-text-align: center;
+h1 {
+    font-weight: 700;
+    font-size: 56px;
+    color: #75B79E;
+    margin-top: 40px;
+    margin-bottom: 47px;
+    text-align: center;
 }
 
-main{
+main {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,10 +33,18 @@ main{
     gap: 34px;
 }
 
+.decks{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
 .card {
     width: 200px;
     height: 250px;
     position: relative;
+    margin: 30px 10px;
 }
 
 .face {
@@ -50,7 +58,7 @@ main{
     justify-content: center;
     position: absolute;
     backface-visibility: hidden;
-    transition: all .5s;
+    transition: all 0.5s;
     transform-style: preserve-3d;
 }
 
@@ -58,20 +66,23 @@ main{
     transform: rotateY(180deg);
 }
 
-.card:hover .back-face {
+.virar-carta .back-face {
     transform: rotateY(0deg);
 }
 
-.card:hover .front-face {
+.virar-carta .front-face {
     transform: rotateY(-180deg);
 }
 
-img{
+img {
     width: 100px;
     height: 100px;
+    position:absolute;
 }
 
-@media(max-width: 335px){
-    h1{font-size: 36px;
-        text-align: center;}
+@media(max-width: 335px) {
+    h1 {
+        font-size: 36px;
+        text-align: center;
+    }
 }

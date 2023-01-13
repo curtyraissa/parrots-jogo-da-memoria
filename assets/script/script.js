@@ -34,7 +34,7 @@ function mostrar() {
     let decks = document.querySelector(".decks");
     for (let i = 0; i < baralho.length; i++) {
         let cartinha = `
-        <li class="card virar-carta">
+        <li class="card">
             <div class="front-face face">
                 <img src="./assets/img/back.png">
             </div>

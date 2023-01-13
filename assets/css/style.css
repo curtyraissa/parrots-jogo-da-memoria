@@ -25,19 +25,12 @@ h1 {
     text-align: center;
 }
 
-main {
+.decks{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     gap: 34px;
-}
-
-.decks{
-    display: flex;
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: space-around;
 }
 
 .card {
@@ -66,11 +59,11 @@ main {
     transform: rotateY(180deg);
 }
 
-.virar-carta .back-face {
+.card:hover .back-face {
     transform: rotateY(0deg);
 }
 
-.virar-carta .front-face {
+.card:hover .front-face {
     transform: rotateY(-180deg);
 }
 

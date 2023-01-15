@@ -1,4 +1,3 @@
-//inicialização de variável
 let qtd_cartas = 0;
 const baralho = [];
 let papagaio = ["1", "2", "3", "4", "5", "6", "7"];
@@ -6,43 +5,39 @@ let cardOne, cardTwo;
 let moves = 0;
 let hits = 0;
 
-//aleatório
-function comparador() {
+
+function comparator() {
   return Math.random() - 0.5;
 }
 
-//perguntar e validar quantidade de cartas
-function perguntar() {
+
+function ask() {
   while (!(qtd_cartas % 2 == 0 && qtd_cartas >= 4 && qtd_cartas <= 14)) {
     qtd_cartas = prompt("Com quantas cartas deseja jogar?");
   }
-  //chamar função para começar o jogo
-  comecar();
+  start();
 }
 
-//função para começar o jogo e distribuir as cartas
-function comecar() {
+function start() {
   for (let i = 0; i < (qtd_cartas / 2); i++) {
     let carta = papagaio[i];
     baralho.push(carta)
     baralho.push(carta)
   }
-  baralho.sort(comparador);
-  //chamar função para mostrar as cartas
-  mostrar();
+  baralho.sort(comparator);
+  show();
 }
 
-//função para mostrar as cartas e iniciar o jogo
-function mostrar() {
+function show() {
   let decks = document.querySelector(".decks")
   for (let i = 0; i < baralho.length; i++) {
     let cartinha = `
-        <li class="card turned" onclick="desvirar(this)">
+        <li class="card turned" data-test="card" onclick="desvirar(this)">
             <div class="front-face face">
-                <img src="./assets/img/back.png">
+                <img data-test="face-down-image" src="./assets/img/back.png">
             </div>
             <div class="back-face face">
-                <img src="./assets/img/${baralho[i]}.gif">
+                <img data-test="face-up-image" src="./assets/img/${baralho[i]}.gif">
             </div>
         </li> 
         `
@@ -66,9 +61,9 @@ function desvirar(card) {
     if (cardTwo === undefined) {
       cardTwo = card
       if (cardOne.innerHTML === cardTwo.innerHTML) {
-        fixa();
+        fixed();
         hits += 2;
-        confereSeTerminou();
+        checkIsOver();
       } else {
         setTimeout(vira, 1000);
       }
@@ -83,14 +78,14 @@ function desvirarTudo() {
   }
 }
 
-function fixa() {
+function fixed() {
   cardOne = undefined;
   cardTwo = undefined;
 }
 
-function confereSeTerminou() {
+function checkIsOver() {
   if (hits === baralho.length) {
-    setTimeout(terminar, 1000);
+    setTimeout(finish, 1000);
   } else {
     console.log("continua o jogo")
   }
@@ -99,17 +94,17 @@ function confereSeTerminou() {
 function vira() {
   cardOne.classList.remove("turned");
   cardTwo.classList.remove("turned");
-  fixa();
+  fixed();
 }
 
-function terminar() {
-  alert(`Você terminou o jogo em ${moves} jogadas!`);
-  const recomecar = confirm("Deseja jogar mais uma partida?");
-  if (recomecar === true) {
+function finish() {
+  alert(`Você ganhou em ${moves} jogadas!`);
+  const restart = confirm("Deseja jogar mais uma partida?");
+  if (restart === true) {
     window.location.reload();
   } else {
     alert("Obrigado por jogar!");
   }
 }
 
-perguntar();
+ask();

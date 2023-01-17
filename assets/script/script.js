@@ -5,11 +5,9 @@ let cardOne, cardTwo;
 let moves = 0;
 let hits = 0;
 
-
 function comparator() {
   return Math.random() - 0.5;
 }
-
 
 function ask() {
   while (!(qtd_cartas % 2 == 0 && qtd_cartas >= 4 && qtd_cartas <= 14)) {
@@ -100,7 +98,7 @@ function vira() {
 function finish() {
   alert(`Você ganhou em ${moves} jogadas!`);
   const restart = confirm("Deseja jogar mais uma partida?");
-  if (restart === true) {
+  if (restart) {
     window.location.reload();
   } else {
     alert("Obrigado por jogar!");
